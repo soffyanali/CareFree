@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">CareFree</string>
+    <string name="app_name">Nixer</string>
+    <string name="action_settings">LogOut</string>
+    <string name="password_hint">Password</string>
+    <string name="email_hint">Username</string>
+    <string name="sign_up_button_label">Sign Up</string>
+    <string name="signup_error_message">Please make sure you enter an username  and password!</string>
+    <string name="signup_error_title">Error!</string>
+    <string name="signup_success">Account successfully created! You can now Login.</string>
+    <string name="login_error_message">Please make sure you enter a username and password!</string>
+    <string name="wrongemailpass">Wrong Username or password!</string>
+    <string name="login_error_title">Error!</string>
+    <string name="login_button_label">Login</string>
+    <string name="sign_up_text">Sign Up!</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="add_item">Add New Item</string>
+    <string name="action_logout">Logout</string>
+    <string name="title_activity_main_drawer">Nixer</string>
+    <string name="bio_text">Just Mikey is a Acoustic, Hip Hop 4 piece band. Mick Lennon on Vocals, Cian Ryan on Guitar, Adam Collins on Bass and Backing Vocals. We Started in late 2013 and have spent most of 2014 worked hard recording our Debut E.P.</string>
+    <string name="RequestMakeup">Request Make-up Artist</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
 </resources>

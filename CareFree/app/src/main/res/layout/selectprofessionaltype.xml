@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#7D1935">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_weight="0.18"
+        android:text="What are you looking for?"
+        android:textSize="22dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="66dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="296dp"
+        android:layout_height="35dp"
+        android:text="Makeup Artist"
+        android:id="@+id/makeup_artist"
+        android:textSize="18dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/textView"
+        android:layout_alignRight="@+id/programmer"
+        android:layout_alignEnd="@+id/programmer"
+        android:layout_marginTop="99dp" />
+
+    <Button
+        android:layout_width="297dp"
+        android:layout_height="35dp"
+        android:text="Plumber"
+        android:id="@+id/plumber"
+        android:textSize="18dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/makeup_artist"
+        android:layout_alignLeft="@+id/programmer"
+        android:layout_alignStart="@+id/programmer"
+        android:layout_marginTop="32dp" />
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="Programmer"
+        android:id="@+id/programmer"
+        android:textSize="18dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/plumber"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="214dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView5"
+        android:src="@drawable/logos"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

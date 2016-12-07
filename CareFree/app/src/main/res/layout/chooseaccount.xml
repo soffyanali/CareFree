@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#7D1935">
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="Standard Account"
+        android:id="@+id/standaccountbutton"
+        android:textSize="15dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="90dp"
+        android:layout_alignLeft="@+id/professionbutton"
+        android:layout_alignStart="@+id/professionbutton"
+        android:layout_alignRight="@+id/professionbutton"
+        android:layout_alignEnd="@+id/professionbutton"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="Professional Account"
+        android:id="@+id/professionbutton"
+        android:textSize="15dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/standaccountbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="46dp" />
+
+    <ImageView
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/logo"
+        android:src="@drawable/logos"
+        android:layout_marginTop="107dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

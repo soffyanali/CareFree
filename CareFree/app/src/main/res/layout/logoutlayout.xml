@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7D1935">
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="Log Out"
+        android:id="@+id/logoutbutton"
+        android:textSize="15dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/continuebutton"
+        android:layout_alignStart="@+id/continuebutton" />
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="Continue"
+        android:id="@+id/continuebutton"
+        android:textSize="15dp"
+        android:background="#4A96AD"
+        android:textColor="#ffffff"
+        android:layout_marginTop="37dp"
+        android:layout_below="@+id/logoutbutton"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="213dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/logos"
+        android:layout_above="@+id/logoutbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="71dp" />
+
+</RelativeLayout>
