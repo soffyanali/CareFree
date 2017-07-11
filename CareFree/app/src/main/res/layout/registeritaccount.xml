@@ -1,134 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="22dp"
     android:weightSum="1"
-    android:id="@+id/linearlayout"
-    android:background="#d2d79c">
-
-    <ImageView
-        android:layout_width="213dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:src="@drawable/logos"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    android:background="@drawable/bg">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=" Professional Account Sign Up"
+        android:text="   IT Professional Registration"
         android:id="@+id/s"
-        android:textSize="22dp"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/imageView2"
+        android:textSize="28dp"
+        android:textColor="#1d1c1c" />
+
+    <EditText
+        android:id="@+id/ituname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:id="@+id/professionusername"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:ems="10"
-        android:inputType="textEmailAddress"
+        android:inputType="textAutoComplete"
         android:hint="User Name"
-        android:textColorHint="#ffffff"
-        android:textColor="#ffffff"
-        android:layout_above="@+id/professionpassword"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7" />
+        android:layout_marginTop="42dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="#1d1c1c"
+        android:textColorHint="#1d1c1c" />
 
     <EditText
-        android:id="@+id/professionpassword"
+        android:id="@+id/itpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailField"
+        android:layout_below="@+id/emailField"
         android:ems="10"
+        android:layout_margin="12dp"
         android:inputType="textPassword"
-        android:hint="@string/password_hint"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        android:layout_above="@+id/textView19"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView7" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=" Profession:-"
-        android:id="@+id/textView19"
-        android:textSize="20dp"
-        android:textColor="#ffffff"
-        android:layout_above="@+id/spinner"
-        android:layout_toRightOf="@+id/textView7"
-        android:layout_toEndOf="@+id/textView7" />
+        android:hint="Password"
+        android:textColorHint="#1d1c1c"
+        android:textColor="#1d1c1c" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
+        android:id="@+id/specialization"
+        android:layout_width="362dp"
         android:layout_height="wrap_content"
-        android:drawSelectorOnTop="true"
-        android:entries="@array/array_name"
-        android:minHeight="38dp"
-        android:spinnerMode="dialog"
-        android:layout_above="@+id/emailidtext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="9dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView8" />
+        android:entries="@array/country_arrays"
+        android:textSize="28dp"
+        android:prompt="@string/country_prompt"
+        android:layout_margin="12dp"
+        />
 
     <EditText
-        android:id="@+id/phoneno"
+        android:id="@+id/itphoneno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
+        android:inputType="textAutoComplete"
         android:hint="Phone No"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff"
-        android:layout_above="@+id/professionalsignup" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5" />
+        android:layout_margin="12dp"
+        android:textColor="#1d1c1c"
+        android:textColorHint="#1d1c1c" />
 
     <EditText
-        android:id="@+id/emailidtext"
+        android:id="@+id/itemail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email Id"
-        android:textColorHint="#ffffff"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="44dp"
-        android:layout_above="@+id/professionalsignup"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1221" />
-    <Button
-        android:id="@+id/professionalsignup"
-        android:layout_width="293dp"
-        android:layout_height="35dp"
-        android:text="@string/sign_up_button_label"
-        android:textColor="#ffffff"
-        android:background="#4A96AD"
-        android:layout_marginBottom="39dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textAutoComplete"
+        android:hint="Email ID"
+        android:layout_margin="12dp"
+        android:textColor="#1d1c1c"
+        android:textColorHint="#1d1c1c" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordField"
+        android:layout_below="@+id/passwordField"
+        android:layout_margin="12dp"
+        android:text="Sign UP"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c" />
+
+</LinearLayout>
