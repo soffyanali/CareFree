@@ -1,8 +1,7 @@
 package com.example.carefree.carefree;
 
 import android.content.Intent;
-        import android.os.AsyncTask;
-        import android.os.Bundle;
+import android.os.Bundle;
         import android.os.StrictMode;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
@@ -10,14 +9,6 @@ import android.content.Intent;
         import android.widget.Button;
         import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-        import android.widget.Toast;
-
-
-        import java.io.InputStream;
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
 
 
 public class ProfessionalAccountSignup extends AppCompatActivity
@@ -29,7 +20,7 @@ public class ProfessionalAccountSignup extends AppCompatActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.professionalaccount);
+        setContentView(R.layout.registeritaccount);
         if (android.os.Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);

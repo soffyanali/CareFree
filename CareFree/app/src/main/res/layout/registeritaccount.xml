@@ -5,7 +5,7 @@
     android:paddingTop="22dp"
     android:weightSum="1"
     android:id="@+id/linearlayout"
-    android:background="#7D1935">
+    android:background="#d2d79c">
 
     <ImageView
         android:layout_width="213dp"

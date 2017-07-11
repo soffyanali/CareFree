@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin" tools:context=".LoginActivity"
     android:id="@+id/linearlayout"
     android:weightSum="1"
-    android:background="#7D1935">
+    android:background="#d2d79c">
 
     <ImageView
         android:layout_width="213dp"
@@ -22,38 +22,45 @@
             android:layout_height="wrap_content" android:hint="User Name"
             android:inputType="textEmailAddress" android:maxLines="1"
             android:singleLine="true"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff" />
+            android:textColor="#1d1c1c"
+            android:textColorHint="#1d1c1c"
+            android:layout_margin="12dp"/>
 
         <EditText android:id="@+id/passwordtxt" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:hint="Password"
             android:imeActionId="@+id/login"
+            android:layout_margin="12dp"
             android:imeActionLabel="Password"
             android:imeOptions="actionUnspecified" android:inputType="textPassword"
             android:maxLines="1" android:singleLine="true"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff" />
+            android:textColor="#1d1c1c"
+            android:textColorHint="#1d1c1c" />
 
-        <Button android:id="@+id/email_sign_in_button" style="?android:textAppearanceSmall"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" android:text="Sign In"
-            android:textStyle="bold"
-            android:background="#4A96AD"
-            android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/email_sign_in_button"
+            style="?android:textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#da5a63"
+            android:text="Sign In"
+            android:layout_margin="12dp"
+            android:textColor="#1d1c1c"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <TextView
+    <Button
         android:id="@+id/signUpText"
-        android:layout_width="wrap_content"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="16dp"
+        android:layout_margin="12dp"
+        android:background="#da5a63"
         android:text="Sign Up"
-        android:textSize="26dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#F5F3EE" />
+        android:textColor="#1d1c1c"
+        android:textStyle="bold" />
 
 </LinearLayout>
 

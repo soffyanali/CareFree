@@ -4,14 +4,7 @@
     android:layout_height="match_parent"
     android:paddingTop="22dp"
     android:weightSum="1"
-    android:background="#7D1935">
-
-    <ImageView
-        android:layout_width="213dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView4"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/logos" />
+    android:background="#d2d79c">
 
     <TextView
         android:layout_width="wrap_content"
