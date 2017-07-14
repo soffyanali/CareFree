@@ -30,7 +30,7 @@ import android.widget.Toast;
 import android.Manifest;
 
 
-public class ShowMapStandard extends AppCompatActivity
+public class ITExpertMap extends AppCompatActivity
 {
         double longitute;
         double latitude;

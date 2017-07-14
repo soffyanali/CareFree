@@ -30,7 +30,7 @@ import android.widget.Toast;
 import android.Manifest;
 
 
-public class ShowMapProfessional extends AppCompatActivity
+public class CustomerMap extends AppCompatActivity
 {
     double longitute;
     double latitude;
@@ -40,7 +40,7 @@ public class ShowMapProfessional extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(ShowMapProfessional.this, LoginActivity.class);
+        Intent intent = new Intent(CustomerMap.this, LoginActivity.class);
         startActivity(intent);
         finish();
 
