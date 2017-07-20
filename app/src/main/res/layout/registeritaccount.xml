@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="22dp"
@@ -54,6 +60,15 @@
         android:layout_margin="12dp"
         />
 
+    <MultiAutoCompleteTextView
+        android:layout_margin="12dp"
+        android:id="@+id/Specialskills"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:hint="Special skills"
+        android:textColor="#1d1c1c"
+        android:textColorHint="#1d1c1c"/>
+
     <EditText
         android:id="@+id/itphoneno"
         android:layout_width="match_parent"
@@ -81,7 +96,7 @@
         android:textColorHint="#1d1c1c" />
 
     <Button
-        android:id="@+id/signup"
+        android:id="@+id/itsignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/passwordField"
@@ -91,4 +106,5 @@
         android:background="#da5a63"
         android:textColor="#1d1c1c" />
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

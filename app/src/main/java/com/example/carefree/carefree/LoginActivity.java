@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -35,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     protected TextView signUpTextView;
     InputStream is;
     String result;
+    JSONParser jParser = new JSONParser();
     Boolean flag=false;
     SharedPreferences sharedpreferences;
     ArrayList<HashMap<String, String>> productsList;
@@ -52,11 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        if (settings.getString("logged", "").toString().equals("logged"))
-        {
-                Intent intent2 = new Intent(LoginActivity.this, LogOutActivity.class);
-                startActivity(intent2);
-                finish();
+        if (settings.getString("logged", "").toString().equals("logged")) {
+            Intent intent2 = new Intent(LoginActivity.this, LogOutActivity.class);
+            startActivity(intent2);
+            finish();
 
         }
         signUpTextView = (TextView) findViewById(R.id.signUpText);
@@ -84,52 +85,28 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (email.isEmpty() || password.isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage(R.string.login_error_message)
-                            .setTitle(R.string.login_error_title)
+                    builder.setMessage("Empty username or password...!!!")
+                            .setTitle("Invalid inputs")
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
                     final String emailAddress = email;
 
-                    //doInBackground1();
-                    if(emailEditText.getText().toString().equals("standard")&&passwordEditText.getText().toString().equals("nci"))
-                    {
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putString("name", email);
-                        editor.putString("password", password);
-                        editor.putString("logged", "logged");
-                        editor.commit();
-
-                            Intent intent2 = new Intent(LoginActivity.this, SelectProfessinalType.class);
-                            startActivity(intent2);
-                            finish();
-
-
-                        }else if(emailEditText.getText().toString().equals("professional")&&passwordEditText.getText().toString().equals("nci"))
-                        {
-                            Intent intent1 = new Intent(LoginActivity.this, ShowMapProfessional.class); //change your current location
-                            startActivity(intent1);
-                            finish();
-
-                            // Toast.makeText(getApplicationContext(),"Profession= "+profession,Toast.LENGTH_LONG).show();
-                        }else
-                        {
-                            Toast.makeText(getApplicationContext(),"Wrong combination..... ",Toast.LENGTH_LONG).show();
-                        }
-
-                        //Login with an email/password combination
+                    readJson();
+                    // use this to start and trigger a service
+                    //Login with an email/password combination
                 }
             }
         });
     }
 
-/*    protected void doInBackground1()
+    protected void readJson()
     {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             // getting JSON string from URL
-            JSONObject json = jParser.makeHttpRequest("http://192.168.0.17/nixerproject/selectuserdetails.php", "GET", params);
+            JSONObject json = jParser.makeHttpRequest("https://carefreeandroid.000webhostapp.com/userdetails.php", "GET", params);
 
             // Check your log cat for JSON reponse
 
@@ -168,18 +145,16 @@ public class LoginActivity extends AppCompatActivity {
 
                             //if standard then ask for what they looking for or professional then show their current location
                             if(accountype.equals("standard")) {
-                         //       Intent intent = new Intent(LoginActivity.this, ShowMapStandard.class);
-                           //     startActivity(intent);
-                                Intent intent2 = new Intent(LoginActivity.this, SelectProfessinalType.class);
-                                startActivity(intent2);
-                                finish();
+                                //       Intent intent = new Intent(LoginActivity.this, ShowMapStandard.class);
+                                //     startActivity(intent);
 
+                                Intent intent2 = new Intent(LoginActivity.this, CustomerMap.class);
+                                startActivity(intent2);
 
                             }else {
-                                Intent intent1 = new Intent(LoginActivity.this, ShowMapProfessional.class); //change your current location
-                                startActivity(intent1);
-                                finish();
 
+                                Intent intent1 = new Intent(LoginActivity.this, ITExpertMap.class); //change your current location
+                                startActivity(intent1);
                                 // Toast.makeText(getApplicationContext(),"Profession= "+profession,Toast.LENGTH_LONG).show();
                             }
                             flag=true;
@@ -194,8 +169,8 @@ public class LoginActivity extends AppCompatActivity {
                 if(flag==false)
                 {
                     AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                    builder.setMessage(R.string.wrongemailpass)
-                            .setTitle(R.string.login_error_title)
+                    builder.setMessage("Wrong username or password...!!!")
+                            .setTitle("Invalid inputs")
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
@@ -204,6 +179,6 @@ public class LoginActivity extends AppCompatActivity {
             {
 
             }
-    }*/
+    }
 
 }

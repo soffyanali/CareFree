@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class StandardAccountSignup extends AppCompatActivity
+public class CustomerRegistration extends AppCompatActivity
 {
     protected EditText standerdemail;
     protected EditText standerdpassword;

@@ -26,7 +26,7 @@ public class SelectAccountType extends AppCompatActivity {
         standardacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectAccountType.this, StandardAccountSignup.class);
+                Intent intent = new Intent(SelectAccountType.this, ITExpertRegistration.class);
                 startActivity(intent);
                 finish();
             }
@@ -34,7 +34,7 @@ public class SelectAccountType extends AppCompatActivity {
         professionalacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectAccountType.this, ProfessionalAccountSignup.class);
+                Intent intent = new Intent(SelectAccountType.this, CustomerRegistration.class);
                 startActivity(intent);
                 finish();
             }
