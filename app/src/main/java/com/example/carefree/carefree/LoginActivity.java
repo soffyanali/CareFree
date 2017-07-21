@@ -28,7 +28,6 @@ import static android.R.attr.name;
 public class LoginActivity extends AppCompatActivity {
 
     // Creating JSON Parser object
-    //JSONParser jParser = new JSONParser();
     public static final String PREFS_NAME= "loginusersdetails";
     protected EditText emailEditText;
     protected EditText passwordEditText;
@@ -106,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             // getting JSON string from URL
-            JSONObject json = jParser.makeHttpRequest("https://carefreeandroid.000webhostapp.com/userdetails.php", "GET", params);
+            JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd+"userdetails.php", "GET", params);
 
             // Check your log cat for JSON reponse
 
@@ -148,13 +147,13 @@ public class LoginActivity extends AppCompatActivity {
                                 //       Intent intent = new Intent(LoginActivity.this, ShowMapStandard.class);
                                 //     startActivity(intent);
 
-                                Intent intent2 = new Intent(LoginActivity.this, CustomerMap.class);
+                                Intent intent2 = new Intent(LoginActivity.this, SelectITExpertType.class);
                                 startActivity(intent2);
 
                             }else {
 
-                                Intent intent1 = new Intent(LoginActivity.this, ITExpertMap.class); //change your current location
-                                startActivity(intent1);
+                                //Intent intent1 = new Intent(LoginActivity.this, ITExpertMap.class); //change your current location
+                                //startActivity(intent1);
                                 // Toast.makeText(getApplicationContext(),"Profession= "+profession,Toast.LENGTH_LONG).show();
                             }
                             flag=true;
@@ -174,6 +173,8 @@ public class LoginActivity extends AppCompatActivity {
                             .setPositiveButton(android.R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
+                    emailEditText.setText("");
+                    passwordEditText.setText("");
                 }
                 }catch (Exception e)
             {

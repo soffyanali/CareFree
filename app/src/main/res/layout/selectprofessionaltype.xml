@@ -3,64 +3,87 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="#7D1935">
+    android:background="@drawable/bg">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_weight="0.18"
-        android:text="What are you looking for?"
-        android:textSize="22dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="66dp"
-        android:layout_below="@+id/imageView5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#1d1c1c"
+        android:textColorHint="#1d1c1c"
+        android:layout_marginTop="49dp"
+        android:layout_weight="0.18"
+        android:text="Select IT Expert"
+        android:textSize="22dp"
+        android:textStyle="bold"/>
 
     <Button
         android:layout_width="296dp"
         android:layout_height="35dp"
-        android:text="Makeup Artist"
-        android:id="@+id/makeup_artist"
+        android:text="IT Services"
+        android:id="@+id/services"
         android:textSize="18dp"
-        android:background="#4A96AD"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/textView"
-        android:layout_alignRight="@+id/programmer"
-        android:layout_alignEnd="@+id/programmer"
-        android:layout_marginTop="99dp" />
+        android:layout_alignRight="@+id/technician"
+        android:layout_alignEnd="@+id/technician"
+        android:layout_marginTop="129dp"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c"
+        android:textStyle="bold"/>
 
     <Button
         android:layout_width="297dp"
         android:layout_height="35dp"
-        android:text="Plumber"
-        android:id="@+id/plumber"
+        android:text="IT Security"
+        android:id="@+id/security"
         android:textSize="18dp"
-        android:background="#4A96AD"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/makeup_artist"
-        android:layout_alignLeft="@+id/programmer"
-        android:layout_alignStart="@+id/programmer"
+        android:layout_below="@+id/services"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c"
+        android:textStyle="bold"
+        android:layout_alignLeft="@+id/technician"
+        android:layout_alignStart="@+id/technician"
         android:layout_marginTop="32dp" />
 
     <Button
         android:layout_width="293dp"
         android:layout_height="35dp"
-        android:text="Programmer"
-        android:id="@+id/programmer"
+        android:text="IT Technician"
+        android:id="@+id/technician"
         android:textSize="18dp"
-        android:background="#4A96AD"
-        android:textColor="#ffffff"
         android:layout_marginTop="36dp"
-        android:layout_below="@+id/plumber"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/security"
+        android:layout_centerHorizontal="true"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c"
+        android:textStyle="bold"/>
 
-    <ImageView
-        android:layout_width="214dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView5"
-        android:src="@drawable/logos"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="IT Developer"
+        android:id="@+id/developer"
+        android:textSize="18dp"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/technician"
+        android:layout_centerHorizontal="true"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c"
+        android:textStyle="bold"/>
+
+    <Button
+        android:layout_width="293dp"
+        android:layout_height="35dp"
+        android:text="IT Support"
+        android:id="@+id/support"
+        android:textSize="18dp"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/developer"
+        android:layout_centerHorizontal="true"
+        android:background="#da5a63"
+        android:textColor="#1d1c1c"
+        android:textStyle="bold"/>
 </RelativeLayout>

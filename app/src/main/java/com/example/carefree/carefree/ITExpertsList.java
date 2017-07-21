@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class CustomList extends ArrayAdapter<String>
+public class ITExpertsList extends ArrayAdapter<String>
 {
 
     private final Activity context;
@@ -17,8 +17,8 @@ public class CustomList extends ArrayAdapter<String>
     private final Float[] distance;
     private final String[] ratingvaluelist;
 
-    public CustomList(Activity context, String[] namelist,String[] ratingvaluelist, Float[] distance) {
-        super(context, R.layout.simplerow, namelist);
+    public ITExpertsList(Activity context, String[] namelist,String[] ratingvaluelist, Float[] distance) {
+        super(context, R.layout.oneitexpertadapter, namelist);
         this.context = context;
                 this.namelist = namelist;
         this.distance=distance;
@@ -29,7 +29,7 @@ public class CustomList extends ArrayAdapter<String>
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.simplerow, null, true);
+        View rowView= inflater.inflate(R.layout.oneitexpertadapter, null, true);
         TextView txtTitle = (TextView) rowView.findViewById(R.id.txtnamel);
         TextView txtdistance = (TextView) rowView.findViewById(R.id.txtdistancel);
         TextView txtrating = (TextView) rowView.findViewById(R.id.txtavgrating);

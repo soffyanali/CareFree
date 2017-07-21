@@ -43,10 +43,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="#da5a63"
+            android:textColor="#1d1c1c"
+            android:textStyle="bold"
             android:text="Sign In"
             android:layout_margin="12dp"
-            android:textColor="#1d1c1c"
-            android:textStyle="bold" />
+          />
 
     </LinearLayout>
 

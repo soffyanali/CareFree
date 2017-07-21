@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:background="#7D1935">
+
+    <TextView
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView13"
+        android:layout_weight="0.23" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name:- "
+        android:id="@+id/textview_professionalname"
+        android:layout_weight="0.06"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView14" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textviewprofession"
+        android:layout_weight="0.06"
+        android:text="Profession:- "
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView15" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtview_phoneno"
+        android:layout_weight="0.06"
+        android:text="Phone No:- "
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView16" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView_emailid"
+        android:layout_weight="0.06"
+        android:text="Email Id:- "
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView17"
+        android:layout_weight="0.06" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtvie_activenow"
+        android:layout_weight="0.23"
+        android:text="Active Now:- "
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="20dp" />
+
+    <RatingBar
+        android:layout_width="306dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/ratingBar"
+        android:paddingLeft="70dp"
+        android:stepSize="1"
+        android:numStars="5"
+        android:rating="3"
+        android:isIndicator="false" />
+
+    <TextView
+        android:layout_width="396dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView18"
+        android:layout_weight="0.06" />
+
+    <Button
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submitbuttonrating"
+        android:layout_gravity="center"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:background="#4A96AD" />
+
+    <TextView
+        android:layout_width="396dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView19"
+        android:layout_weight="0.06" />
+
+    <Button
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:text="Chat Now"
+        android:id="@+id/chatProfessional"
+        android:layout_gravity="center"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:background="#4A96AD" />
+
+</LinearLayout>

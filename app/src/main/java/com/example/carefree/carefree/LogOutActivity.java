@@ -54,13 +54,13 @@ public class LogOutActivity extends AppCompatActivity {
                 {
                     if(settings.getString("account_type",null).toString().equals("standard"))
                     {
-                        Intent intent2 = new Intent(LogOutActivity.this, SelectProfessinalType.class);
+                        Intent intent2 = new Intent(LogOutActivity.this, SelectITExpertType.class);
                         startActivity(intent2);
                         finish();
 
                     }else {
-                        Intent intent1 = new Intent(LogOutActivity.this, ShowMapProfessional.class); //change your current location
-                        startActivity(intent1);
+                        //Intent intent1 = new Intent(LogOutActivity.this, ShowMapProfessional.class); //change your current location
+                        //startActivity(intent1);
                         finish();
 
                     }

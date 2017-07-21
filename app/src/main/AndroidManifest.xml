@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +22,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyDjrURCUFOQq9YBD8bMSa35jNU7gocXwoE" />
+
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,11 +37,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelectAccountType"></activity>
-        <activity android:name=".ProfessionalAccountSignup"></activity>
-        <activity android:name=".ShowMapProfessional"></activity>
-        <activity android:name=".ShowMapStandard"></activity>
-        <activity android:name=".StandardAccountSignup"></activity>
-        <activity android:name=".SelectProfessinalType"></activity>
+        <activity android:name=".CustomerRegistration"></activity>
+        <activity android:name=".ITExpertRegistration"></activity>
+        <activity android:name=".SelectITExpertType"></activity>
         <activity android:name=".LogOutActivity"></activity>
 
     </application>

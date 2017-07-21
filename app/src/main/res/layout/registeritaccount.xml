@@ -12,6 +12,7 @@
     android:weightSum="1"
     android:background="@drawable/bg">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +20,15 @@
         android:text="   IT Professional Registration"
         android:id="@+id/s"
         android:textSize="28dp"
+        android:gravity="center"
         android:textColor="#1d1c1c" />
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:id="@+id/mappitexpert"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_y="00dp"/>
 
     <EditText
         android:id="@+id/ituname"
@@ -49,6 +58,19 @@
         android:hint="Password"
         android:textColorHint="#1d1c1c"
         android:textColor="#1d1c1c" />
+
+        <EditText
+            android:id="@+id/itconfpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/emailField"
+            android:layout_below="@+id/emailField"
+            android:ems="10"
+            android:layout_margin="12dp"
+            android:inputType="textPassword"
+            android:hint="Confirm Password"
+            android:textColorHint="#1d1c1c"
+            android:textColor="#1d1c1c" />
 
     <Spinner
         android:id="@+id/specialization"

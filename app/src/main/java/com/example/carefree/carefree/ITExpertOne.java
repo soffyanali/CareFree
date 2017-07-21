@@ -34,9 +34,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static nixer.nixer.IPAddress.ipadd;
-
-public class OneITPerson extends AppCompatActivity {
+public class ITExpertOne extends AppCompatActivity {
 
     //Create Variables
     protected TextView textview_professionalname, txtvie_activenow, txtview_phoneno, textviewprofession, textView_emailid;
@@ -52,7 +50,7 @@ public class OneITPerson extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.rating_professional);
+        setContentView(R.layout.oneITexpert);
 
         Intent intent = getIntent();
         final String name = intent.getStringExtra("name");
@@ -118,13 +116,13 @@ public class OneITPerson extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(OneITPerson.this, ChatApplication.class);
+            /*    Intent i = new Intent(OneProfessional.this, ChatApplication.class);
                 i.putExtra("name", name);
                 i.putExtra("profession", profession);
                 i.putExtra("phoneno", phoneno);
                 i.putExtra("emailid", emailid);
                 i.putExtra("loginvalue", loginvalue);
-                startActivity(i);
+                startActivity(i);*/
             }
         });
 
@@ -141,7 +139,7 @@ public class OneITPerson extends AppCompatActivity {
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(OneITPerson.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ITExpertOne.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -176,7 +174,7 @@ public class OneITPerson extends AppCompatActivity {
 
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(ipadd + "insertuserfeedback.php");
+                    HttpPost httpPost = new HttpPost(GlobalDomain.domainadd+ "updatefeedback.php");
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     HttpResponse response = httpClient.execute(httpPost);
                     HttpEntity entity = response.getEntity();
@@ -189,7 +187,7 @@ public class OneITPerson extends AppCompatActivity {
                 //find average rating[get value from userfeedback table]
 
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                JSONObject json = jParser.makeHttpRequest(ipadd + "selectuserratings.php", "GET", params);
+                JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd + "selectuserratings.php", "GET", params);
                 int count = 0;
                 double sum = 0;
                 double avg = 0;
@@ -231,7 +229,7 @@ public class OneITPerson extends AppCompatActivity {
 
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(ipadd + "updateratings.php");
+                    HttpPost httpPost = new HttpPost(GlobalDomain.domainadd  + "updateratings.php");
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs2));
                     HttpResponse response = httpClient.execute(httpPost);
                     HttpEntity entity = response.getEntity();
@@ -241,7 +239,7 @@ public class OneITPerson extends AppCompatActivity {
 
                 //
                 Toast.makeText(getApplicationContext(), "Feedback Submitted", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(OneITPerson.this, ShowMapStandard.class);
+                Intent intent = new Intent(ITExpertOne.this, CustomerMap.class);
                 intent.putExtra("profession", profession);
                 startActivity(intent);
                 finish();
@@ -260,7 +258,7 @@ public class OneITPerson extends AppCompatActivity {
         // products JSONArray
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        JSONObject json = jParser.makeHttpRequest(ipadd + "selectfeedback.php", "GET", params);
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd + "selectfeedback.php", "GET", params);
 
         // products JSONArray
         JSONArray users1 = null;
