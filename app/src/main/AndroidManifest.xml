@@ -27,7 +27,7 @@
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDjrURCUFOQq9YBD8bMSa35jNU7gocXwoE" />
+            android:value="AIzaSyDW8wcr26q6rve18Dse3YzZoa6ELKWvHjc" />
 
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -36,11 +36,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectAccountType"></activity>
+        <activity android:name=".CustomerMap"></activity>
         <activity android:name=".CustomerRegistration"></activity>
+        <activity android:name=".ITExpertMap"></activity>
+        <activity android:name=".ITExpertOne"></activity>
         <activity android:name=".ITExpertRegistration"></activity>
-        <activity android:name=".SelectITExpertType"></activity>
+        <activity android:name=".ITUserChat"></activity>
         <activity android:name=".LogOutActivity"></activity>
+        <activity android:name=".SelectAccountType"></activity>
+        <activity android:name=".SelectITExpertType"></activity>
 
     </application>
 

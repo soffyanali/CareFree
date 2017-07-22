@@ -8,14 +8,10 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +46,7 @@ public class ITExpertOne extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.oneITexpert);
+        setContentView(R.layout.oneitexpert);
 
         Intent intent = getIntent();
         final String name = intent.getStringExtra("name");
@@ -116,13 +112,13 @@ public class ITExpertOne extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-            /*    Intent i = new Intent(OneProfessional.this, ChatApplication.class);
+                Intent i = new Intent(ITExpertOne.this, ITUserChat.class);
                 i.putExtra("name", name);
                 i.putExtra("profession", profession);
                 i.putExtra("phoneno", phoneno);
                 i.putExtra("emailid", emailid);
                 i.putExtra("loginvalue", loginvalue);
-                startActivity(i);*/
+                startActivity(i);
             }
         });
 
@@ -174,7 +170,7 @@ public class ITExpertOne extends AppCompatActivity {
 
                 try {
                     HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(GlobalDomain.domainadd+ "updatefeedback.php");
+                    HttpPost httpPost = new HttpPost(GlobalDomain.domainadd+ "insertuserfeedback.php");
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     HttpResponse response = httpClient.execute(httpPost);
                     HttpEntity entity = response.getEntity();

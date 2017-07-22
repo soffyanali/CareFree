@@ -34,9 +34,10 @@ public class ITExpertsList extends ArrayAdapter<String>
         TextView txtdistance = (TextView) rowView.findViewById(R.id.txtdistancel);
         TextView txtrating = (TextView) rowView.findViewById(R.id.txtavgrating);
 
-        txtTitle.setText(namelist[position]);
+        txtTitle.setText("  "+namelist[position]);
         txtrating.setText(ratingvaluelist[position]);
-        txtdistance.setText(String.valueOf(distance[position] / 1000.00));
+        double dst=distance[position] / 1000;
+        txtdistance.setText( String.format( "%.2f", dst ));
         return rowView;
     }
 }

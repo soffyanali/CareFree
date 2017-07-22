@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical"
+    android:background="@drawable/bg">
+
+
+    <fragment
+        android:id="@+id/itexpertmapfrag"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_x="0dp"
+        android:layout_y="515dp" />
+
+
+</AbsoluteLayout>

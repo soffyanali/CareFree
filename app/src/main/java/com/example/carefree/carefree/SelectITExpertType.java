@@ -41,7 +41,7 @@ public class SelectITExpertType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectITExpertType.this, CustomerMap.class);
-                intent.putExtra("profession", "Services");
+                intent.putExtra("profession", "IT Services");
                 startActivity(intent);
             }
         });
@@ -49,7 +49,7 @@ public class SelectITExpertType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectITExpertType.this, CustomerMap.class);
-                intent.putExtra("profession","Security");
+                intent.putExtra("profession","IT Security");
                 startActivity(intent);
             }
         });
@@ -57,7 +57,7 @@ public class SelectITExpertType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectITExpertType.this, CustomerMap.class);
-                intent.putExtra("profession","Technician");
+                intent.putExtra("profession","IT Technician");
                 startActivity(intent);
             }
         });
@@ -65,7 +65,7 @@ public class SelectITExpertType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectITExpertType.this, CustomerMap.class);
-                intent.putExtra("profession","Developer");
+                intent.putExtra("profession","IT Developer");
                 startActivity(intent);
             }
         });
@@ -73,7 +73,7 @@ public class SelectITExpertType extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SelectITExpertType.this, CustomerMap.class);
-                intent.putExtra("profession","Support");
+                intent.putExtra("profession","IT Support");
                 startActivity(intent);
             }
         });
