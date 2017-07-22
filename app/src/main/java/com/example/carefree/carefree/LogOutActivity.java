@@ -104,8 +104,8 @@ public class LogOutActivity extends AppCompatActivity {
                         startActivity(intent2);
 
                     }else {
-                        //Intent intent1 = new Intent(LogOutActivity.this, ShowMapProfessional.class); //change your current location
-                        //startActivity(intent1);
+                        Intent intent1 = new Intent(LogOutActivity.this, ITExpertMap.class); //change your current location
+                        startActivity(intent1);
                     }
                 }
             }

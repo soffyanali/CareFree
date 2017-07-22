@@ -103,32 +103,32 @@ public class ITUserChat extends AppCompatActivity implements View.OnClickListene
         for (int i = 0; i < messagecounter; i++) {
             LinearLayout l = new LinearLayout(this);
             l.setOrientation(LinearLayout.VERTICAL);
-               EditText et = new EditText(this);
-                ArrayList<String> newArr=fmessages.get(i);
+            EditText et = new EditText(this);
+            ArrayList<String> newArr=fmessages.get(i);
 
-                if(newArr.get(0).equals(toname))
-                {
-                    et.setText(newArr.get(2));
-                    et.setPadding(30,5,30,5);
-                    et.setEnabled(false);
-                    et.setTextColor(Color.parseColor("#000000"));
-                    et.setBackgroundColor(Color.parseColor("#f0f0f0"));
-                    et.setBackgroundResource(R.drawable.rounded_corner1);
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    l.addView(et, lp);
-                    lp.setMargins(380,20,5,5);
-                }else
-                {
-                    et.setText(newArr.get(2));
-                    et.setEnabled(false);
-                    et.setTextColor(Color.parseColor("#000000"));
-                    et.setPadding(30,5,30,5);
-                    et.setBackgroundColor(Color.parseColor("#dddddd"));
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    l.addView(et, lp);
-                    lp.setMargins(10,20,5,5);
-                    et.setBackgroundResource(R.drawable.rounded_corner);
-                }
+            if(newArr.get(0).equals(toname))
+            {
+                et.setText(newArr.get(2));
+                et.setPadding(30,5,30,5);
+                et.setEnabled(false);
+                et.setTextColor(Color.parseColor("#000000"));
+                et.setBackgroundColor(Color.parseColor("#f0f0f0"));
+                et.setBackgroundResource(R.drawable.rounded_corner1);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+                l.addView(et, lp);
+                lp.setMargins(380,20,5,5);
+            }else
+            {
+                et.setText(newArr.get(2));
+                et.setEnabled(false);
+                et.setTextColor(Color.parseColor("#000000"));
+                et.setPadding(30,5,30,5);
+                et.setBackgroundColor(Color.parseColor("#dddddd"));
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT);
+                l.addView(et, lp);
+                lp.setMargins(10,20,5,5);
+                et.setBackgroundResource(R.drawable.rounded_corner);
+            }
 
             ll.addView(l);
         }

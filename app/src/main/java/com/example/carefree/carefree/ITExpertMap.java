@@ -162,19 +162,148 @@ public class ITExpertMap extends AppCompatActivity implements
         //
         displayList();
 
-        chatProfpp= (Button) findViewById(R.id.chatProfpp);
-        chatProfpp.setOnClickListener(new View.OnClickListener() {
+    }
+
+    private void displayList()
+    {
+
+        ArrayList<String> names=senderusersOnly();
+        preferences = getSharedPreferences("loginusersdetails", MODE_PRIVATE);
+        String sharedname = preferences.getString("name", null);
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd+"userdetails.php", "GET", params);
+        int count=0;
+        try {
+            users = json.optJSONArray("result");
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject c = users.getJSONObject(i);
+                String name1=c.getString("name");
+
+                if(!sharedname.equals(name1))
+                {
+                    if(names.contains(name1))
+                    {
+                        count++;
+                    }
+                }
+            }
+        }catch (Exception e)
+        {
+
+        }
+
+        // Check your log cat for JSON reponse
+        users1 = json.optJSONArray("result");
+        int cn=1;
+        final String[] namelist = new String[count];
+        final String[] userlatitutelist = new String[count];
+        final String[] userlongitutelist = new String[count];
+        final String[] professionlist = new String[count];
+        final String[] phonenolist = new String[count];
+        final String[] emailidlist = new String[count];
+        final String[] loginvaluelist = new String[count];
+        final String[] ratingvaluelist = new String[count];
+
+        int countp=0;
+        try {
+
+            for (int i = 0; i < users1.length(); i++) {
+                JSONObject c = users1.getJSONObject(i);
+
+                String name1=c.getString("name");
+                String password=c.getString("password");
+                String accountype=c.getString("account_type");
+                String profession1=c.getString("profession");
+                String phoneno=c.getString("phoneno");
+                String emailid=c.getString("emailid");
+                String userlatitute=c.getString("userlatitute");
+                String userlongitute=c.getString("userlongitute");
+                String loginvalue=c.getString("login");
+                String ratingvalue=c.getString("avgrating");
+
+                if(!sharedname.equals(name1))
+                {
+                    if(names.contains(name1))
+                    {
+                        namelist[countp]=name1;
+                        userlatitutelist[countp]=userlatitute;
+                        userlongitutelist[countp]=userlongitute;
+                        professionlist[countp]=profession1;
+                        phonenolist[countp]=phoneno;
+                        emailidlist[countp]=emailid;
+                        loginvaluelist[countp]=loginvalue;
+                        ratingvaluelist[countp]=ratingvalue;
+
+                        cn++;
+                        countp++;
+                    }
+                }
+
+            }
+        }catch (Exception e)
+        {
+
+        }
+        //end add map markers
+
+        ChatCustomList adapter = new ChatCustomList(ITExpertMap.this, namelist, ratingvaluelist);
+        list=(ListView)findViewById(R.id.itexpmainListView);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
             @Override
-            public void onClick(View v) {
-                preferences = getSharedPreferences("loginusersdetails", MODE_PRIVATE);
-                String name = preferences.getString("name", null);
-                Intent i=new Intent(ITExpertMap.this,ChatUserListProf.class);
-                i.putExtra("sharename",name);
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(ITExpertMap.this, "You Clicked at " +namelist[+ position], Toast.LENGTH_SHORT).show();
+                String stringText;
+
+                Intent i=new Intent(ITExpertMap.this,ITUserChat.class);
+                i.putExtra("name", namelist[+ position]);
+                i.putExtra("profession",professionlist[+position] );
+                i.putExtra("phoneno",phonenolist[+position]);
+                i.putExtra("emailid",emailidlist[+position]);
+                i.putExtra("loginvalue",loginvaluelist[+position]);
                 startActivity(i);
-                finish();
             }
         });
+    }
 
+
+    private ArrayList<String> senderusersOnly() {
+
+        preferences = getSharedPreferences("loginusersdetails", MODE_PRIVATE);
+        String profname = preferences.getString("name", null);
+        // products JSONArray
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd + "selectmessages.php", "GET", params);
+
+        // products JSONArray
+        JSONArray users1 = null;
+        ArrayList<String> names = new ArrayList<String>();
+        // Check your log cat for JSON reponse
+        users1 = json.optJSONArray("result");
+
+        int countp = 0;
+        try {
+
+            for (int i = 0; i < users1.length(); i++) {
+                JSONObject c = users1.getJSONObject(i);
+
+                String touser = c.getString("touser");
+                String fromuser = c.getString("fromuser");
+
+                if (profname.equals(touser)) {
+                    countp++;
+                    names.add(fromuser);
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return names;
     }
 
     private boolean haveNetworkConnection() {

@@ -15,5 +15,29 @@
         android:layout_x="0dp"
         android:layout_y="515dp" />
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_x="0dp"
+        android:layout_y="0dp"
+        android:weightSum="1"
+        android:gravity="bottom|clip_horizontal|center|clip_vertical|start|right|center_horizontal|fill|fill_horizontal|top|left|center_vertical|fill_vertical"
+        android:background="#6ec456">
+
+    </LinearLayout>
+
+    <ListView android:layout_width="match_parent"
+        android:layout_height="570dp"
+        android:id="@+id/itexpmainListView"
+        android:divider="#6ec456"
+        android:dividerHeight="05dp"
+        android:smoothScrollbar="true"
+        android:layout_x="0dp"
+        android:layout_y="3dp"
+        android:fastScrollEnabled="true"
+        android:background="#4A96AD"
+        android:textColor="#ffffff" >
+    </ListView>
 
 </AbsoluteLayout>

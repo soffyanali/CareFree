@@ -179,8 +179,8 @@ public class LoginActivity extends AppCompatActivity {
 
                             }else {
 
-                                //Intent intent1 = new Intent(LoginActivity.this, ITExpertMap.class); //change your current location
-                                //startActivity(intent1);
+                                Intent intent1 = new Intent(LoginActivity.this, ITExpertMap.class); //change your current location
+                                startActivity(intent1);
                                 finish();
                                 // Toast.makeText(getApplicationContext(),"Profession= "+profession,Toast.LENGTH_LONG).show();
                             }

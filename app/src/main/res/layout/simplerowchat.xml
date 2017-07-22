@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/smallbg">
+
+    <TextView
+        android:id="@+id/txtavgrating"
+        android:layout_width="113dp"
+        android:layout_height="match_parent"
+        android:text="Rating"
+        android:layout_x="269dp"
+        android:layout_y="0dp"
+        android:gravity="left"
+        android:textSize="18dp"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff" />
+
+    <TextView
+            android:id="@+id/txtnamel"
+            android:layout_width="183dp"
+            android:layout_height="50dp"
+            android:text="Name"
+            android:layout_y="2dp"
+            android:gravity="left"
+            android:textSize="18dp"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:layout_x="26dp" />
+
+</AbsoluteLayout>
