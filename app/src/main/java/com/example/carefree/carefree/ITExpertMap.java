@@ -258,7 +258,7 @@ public class ITExpertMap extends AppCompatActivity implements
                 Toast.makeText(ITExpertMap.this, "You Clicked at " +namelist[+ position], Toast.LENGTH_SHORT).show();
                 String stringText;
 
-                Intent i=new Intent(ITExpertMap.this,ITUserChat.class);
+                Intent i=new Intent(ITExpertMap.this, ITUserChat.class);
                 i.putExtra("name", namelist[+ position]);
                 i.putExtra("profession",professionlist[+position] );
                 i.putExtra("phoneno",phonenolist[+position]);

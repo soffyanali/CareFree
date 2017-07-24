@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import com.example.carefree.carefree.GlobalDomain;
+import com.example.carefree.carefree.JSONParser;
+import com.example.carefree.carefree.R;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -130,7 +134,12 @@ public class ITUserChat extends AppCompatActivity implements View.OnClickListene
                 et.setBackgroundResource(R.drawable.rounded_corner);
             }
 
-            ll.addView(l);
+            try {
+                ll.addView(l);
+            }catch(Exception e)
+            {
+                e.printStackTrace();
+            }
         }
     }
     public static Context getAppContext() {
