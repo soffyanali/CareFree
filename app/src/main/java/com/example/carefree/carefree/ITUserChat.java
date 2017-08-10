@@ -1,3 +1,7 @@
+//Refernces:- http://www.tutorialsface.com/2015/08/building-your-own-android-chat-messenger-app-similar-to-whatsapp-using-xmpp-smack-4-1-api-from-scratch-part-1/
+// http://www.uandblog.com/How-to-Create-Chat-Application-in-Android-Studio
+// https://github.com/codepath/android_guides/wiki/Building-Simple-Chat-Client-with-Parse
+
 package com.example.carefree.carefree;
 
 import android.content.Context;

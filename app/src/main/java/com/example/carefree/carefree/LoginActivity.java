@@ -1,3 +1,7 @@
+//References:-
+// https://dzone.com/articles/android-tutorial-how-parse
+// https://examples.javacodegeeks.com/core-java/json/java-json-parser-example/
+
 package com.example.carefree.carefree;
 
 import android.content.Context;

@@ -1,3 +1,7 @@
+// https://dzone.com/articles/android-tutorial-how-parse
+// https://www.javacodegeeks.com/2013/10/android-json-tutorial-create-and-parse-json-data.html
+//https://stackoverflow.com/questions/20560562/how-to-extract-json-data-and-insert-in-mysql-php
+
 package com.example.carefree.carefree;
 
 import android.annotation.TargetApi;

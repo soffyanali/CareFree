@@ -1,13 +1,12 @@
 //References:-
-// https://stackoverflow.com/questions/17519198/how-to-get-the-current-location-latitude-and-longitude-in-android
-// https://stackoverflow.com/questions/41310624/android-how-to-get-current-location-in-longitude-and-latitude
+// https://developers.google.com/maps/documentation/android-api/code-samples
+// https://www.tutorialspoint.com/android/android_google_maps.htm
+// https://www.androidhive.info/2013/08/android-working-with-google-maps-v2/
 // https://dzone.com/articles/android-tutorial-how-parse
-// https://stackoverflow.com/questions/22603935/inserting-data-into-online-server-using-mysql-json-in-android
-
 
 package com.example.carefree.carefree;
 
-
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,28 +14,19 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.Manifest;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -51,59 +41,17 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.StrictMode;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.MultiAutoCompleteTextView;
-import android.widget.Spinner;
-import android.widget.Toast;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
 
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
-public class ITExpertRegistration extends AppCompatActivity implements
+public class RecomCustomerMap extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -112,27 +60,29 @@ public class ITExpertRegistration extends AppCompatActivity implements
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest mLocationRequest;
     private LocationSource.OnLocationChangedListener mListener;
-    protected EditText ituname,itpassword,itconfpassword,itphoneno,itemail;
-    Spinner specialization;
-    MultiAutoCompleteTextView Specialskills;
     double longitute;
     double latitude;
-    protected Button itsignup;
+    public static final String PREFS_NAME= "loginusersdetails";
+    JSONParser jParser = new JSONParser();
+    JSONArray users = null, users1 = null;
+    private ArrayAdapter<String> listAdapter;
+    ListView list;
+    Button chatStandard;
+    SharedPreferences preferences;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registeritaccount);
+        setContentView(R.layout.customer_map);
 
         try {
 
             setUpMapIfNeeded();
 
-            if (android.os.Build.VERSION.SDK_INT > 9) {
+            if (Build.VERSION.SDK_INT > 9) {
                 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
                 StrictMode.setThreadPolicy(policy);
             }
-
 
             LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -157,101 +107,6 @@ public class ITExpertRegistration extends AppCompatActivity implements
             e.printStackTrace();
         }
 
-        ituname = (EditText) findViewById(R.id.ituname);
-        itpassword = (EditText) findViewById(R.id.itpassword);
-        itconfpassword = (EditText) findViewById(R.id.itconfpassword);
-        itphoneno = (EditText) findViewById(R.id.itphoneno);
-        itemail = (EditText) findViewById(R.id.itemail);
-        Specialskills=(MultiAutoCompleteTextView)findViewById(R.id.Specialskills) ;
-        specialization= (Spinner) findViewById(R.id.specialization);
-
-        itsignup = (Button) findViewById(R.id.itsignup);
-
-        itsignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                    String name = ituname.getText().toString();
-                    String password = itpassword.getText().toString();
-                    String account = "professional".toString();
-                    String professional = (String) specialization.getSelectedItem();
-                    String phoneno = itphoneno.getText().toString();
-                    String emailid = itemail.getText().toString();
-
-                if(itconfpassword.getText().toString().equals(password))
-                {
-                    insertToDatabase(name, password, account, professional, phoneno, emailid);
-                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(ITExpertRegistration.this);
-                    builder.setMessage("Registered")
-                            .setTitle("User is registered with current location")
-                            .setPositiveButton(android.R.string.ok, null);
-                    android.app.AlertDialog dialog = builder.create();
-                    dialog.show();
-
-                    Intent intent = new Intent(ITExpertRegistration.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                    Toast.makeText(getApplicationContext(),name+" user is registered with current location",Toast.LENGTH_LONG).show();
-
-                }else
-                {
-                    Toast.makeText(getApplicationContext(),"Passwords donot match....!!!",Toast.LENGTH_LONG).show();
-                }
-
-            }
-        });
-
-    }
-
-    private void insertToDatabase(final String name, final String password,final String account_type,final String profession,final String phoneno,final String emailid ) {
-
-
-        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
-            @Override
-            protected String doInBackground(String... params) {
-
-                String pname =name;
-                String ppassword = password;
-                String paccount = account_type;
-                String userlatitute = String.valueOf(latitude);
-                String userlongitute = String.valueOf(longitute);
-
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-                nameValuePairs.add(new BasicNameValuePair("name", pname));
-                nameValuePairs.add(new BasicNameValuePair("password", password));
-                nameValuePairs.add(new BasicNameValuePair("account_type", account_type));
-                nameValuePairs.add(new BasicNameValuePair("profession", profession));
-                nameValuePairs.add(new BasicNameValuePair("phoneno", phoneno));
-                nameValuePairs.add(new BasicNameValuePair("emailid", emailid));
-                nameValuePairs.add(new BasicNameValuePair("userlatitute", userlatitute));
-                nameValuePairs.add(new BasicNameValuePair("userlongitute", userlongitute));
-
-                try {
-                    HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost(GlobalDomain.domainadd+"insertinfo.php");
-                    httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                    HttpResponse response = httpClient.execute(httpPost);
-
-                    HttpEntity entity = response.getEntity();
-
-                } catch (ClientProtocolException e) {
-
-                } catch (Exception e) {
-
-                }
-                return "success";
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                super.onPostExecute(result);
-
-            }
-        }
-        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(name, password,account_type,"","","","","");
     }
 
     @Override
@@ -269,6 +124,7 @@ public class ITExpertRegistration extends AppCompatActivity implements
             mGoogleApiClient.disconnect();
         }
     }
+
 
     private void showGPSDisabledAlertToUser() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -296,7 +152,7 @@ public class ITExpertRegistration extends AppCompatActivity implements
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
             // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mappitexpert)).
+            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapstandard)).
                     getMap();
             // Check if we were successful in obtaining the map.
             if (mMap != null) {
@@ -314,7 +170,7 @@ public class ITExpertRegistration extends AppCompatActivity implements
     public void onConnected(Bundle bundle) {
         Location location = null;
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            location = FusedLocationApi.getLastLocation(mGoogleApiClient);
+            location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         } else {
             // requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
             Toast.makeText(this, "Should ask for the approval/denial here", Toast.LENGTH_LONG).show();
@@ -333,10 +189,13 @@ public class ITExpertRegistration extends AppCompatActivity implements
         final double currentLatitude = location.getLatitude();
         final double currentLongitude = location.getLongitude();
 
+        preferences = getSharedPreferences("loginusersdetails", MODE_PRIVATE);
+        String name = preferences.getString("name", null);
+
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
-                .title("you are here!");
+                .title(name.toUpperCase() + " you are here!");
         mMap.addMarker(options);
         float zoomLevel = 10.0f; //This goes up to 21
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -361,6 +220,129 @@ public class ITExpertRegistration extends AppCompatActivity implements
         longitute= location.getLongitude();
         latitude=location.getLatitude();
 
+        /////Start Add Map Markers
+        Intent intent = getIntent();
+        String profession = intent.getStringExtra("profession");
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd+"userdetails.php", "GET", params);
+        int professionalcount=0;
+        try {
+            users = json.optJSONArray("result");
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject c = users.getJSONObject(i);
+                String profession1 = c.getString("profession");
+                if (profession.equals(profession1)) {
+                    professionalcount++;
+                }
+            }
+        }catch (Exception e)
+        {
+
+        }
+
+        // Check your log cat for JSON reponse
+        users1 = json.optJSONArray("result");
+        int cn=1;
+        final String[] namelist = new String[professionalcount];
+        final String[] userlatitutelist = new String[professionalcount];
+        final String[] userlongitutelist = new String[professionalcount];
+        final String[] professionlist = new String[professionalcount];
+        final String[] phonenolist = new String[professionalcount];
+        final String[] emailidlist = new String[professionalcount];
+        final String[] loginvaluelist = new String[professionalcount];
+        final String[] ratingvaluelist = new String[professionalcount];
+
+        int countp=0;
+        try {
+
+
+            for (int i = 0; i < users1.length(); i++) {
+                JSONObject c = users1.getJSONObject(i);
+
+                String name1=c.getString("name");
+                String password=c.getString("password");
+                String accountype=c.getString("account_type");
+                String profession1=c.getString("profession");
+                String phoneno=c.getString("phoneno");
+                String emailid=c.getString("emailid");
+                String userlatitute=c.getString("userlatitute");
+                String userlongitute=c.getString("userlongitute");
+                String loginvalue=c.getString("login");
+                String ratingvalue=c.getString("avgrating");
+
+                if(profession.equals(profession1))
+                {
+                    namelist[countp]=name1;
+                    userlatitutelist[countp]=userlatitute;
+                    userlongitutelist[countp]=userlongitute;
+                    professionlist[countp]=profession1;
+                    phonenolist[countp]=phoneno;
+                    emailidlist[countp]=emailid;
+                    loginvaluelist[countp]=loginvalue;
+                    ratingvaluelist[countp]=ratingvalue;
+
+                    if(loginvalue.trim().equals("y")) //if user is active then pin will be painted HUE_GREEN
+                    {
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Double.parseDouble(userlatitute), Double.parseDouble(userlongitute)))
+                                .title("" + cn + ". " + name1 + " " + profession)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                    }else
+                    {
+                        mMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(Double.parseDouble(userlatitute), Double.parseDouble(userlongitute)))
+                                .title("" + cn + ". " + name1 + " " + profession)
+                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                    }
+                    cn++;
+                    countp++;
+                }
+
+            }
+        }catch (Exception e)
+        {
+
+        }
+        //end add map markers
+        final Float[] distance = new Float[countp];
+
+        for(int j=0;j<countp;j++) {
+
+            String clatitude=userlatitutelist[j];
+            String clongitude=userlongitutelist[j];
+
+            float[] results = new float[1];
+            float result;
+            Location.distanceBetween(Double.parseDouble(clatitude),
+                    Double.parseDouble(clongitude),
+                    latitude,
+                    longitute,
+                    results);
+            result= Float.parseFloat(new DecimalFormat("##.##").format(results[0]));
+            distance[j]=results[0];
+        }
+
+        ITExpertsList adapter = new ITExpertsList(RecomCustomerMap.this, namelist, ratingvaluelist ,distance);
+        list=(ListView)findViewById(R.id.mainListView);
+        list.setAdapter(adapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Toast.makeText(RecomCustomerMap.this, "You Clicked at " +namelist[+ position], Toast.LENGTH_SHORT).show();
+                String stringText;
+
+                Intent i=new Intent(RecomCustomerMap.this,ITExpertOne.class);
+                i.putExtra("name", namelist[+ position]);
+                i.putExtra("profession",professionlist[+position] );
+                i.putExtra("phoneno",phonenolist[+position]);
+                i.putExtra("emailid",emailidlist[+position]);
+                i.putExtra("loginvalue",loginvaluelist[+position]);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -369,6 +351,7 @@ public class ITExpertRegistration extends AppCompatActivity implements
     }
 
     @Override
+
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if (connectionResult.hasResolution()) {
             try {

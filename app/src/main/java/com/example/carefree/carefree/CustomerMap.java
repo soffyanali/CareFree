@@ -1,3 +1,9 @@
+//References:-
+// https://developers.google.com/maps/documentation/android-api/code-samples
+// https://www.tutorialspoint.com/android/android_google_maps.htm
+// https://www.androidhive.info/2013/08/android-working-with-google-maps-v2/
+// https://dzone.com/articles/android-tutorial-how-parse
+
 package com.example.carefree.carefree;
 
 
@@ -52,7 +58,6 @@ public class CustomerMap extends AppCompatActivity implements
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private GoogleApiClient mGoogleApiClient;
-    public static final String PREFS_NAME = "loginusersdetails";
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private LocationRequest mLocationRequest;
     private LocationSource.OnLocationChangedListener mListener;
@@ -297,6 +302,11 @@ public class CustomerMap extends AppCompatActivity implements
             }
         }catch (Exception e)
         {
+
+        }
+        if(countp==0)
+        {
+            Toast.makeText(getApplicationContext(),"No IT Expert available ...!!!",Toast.LENGTH_LONG).show();
 
         }
         //end add map markers

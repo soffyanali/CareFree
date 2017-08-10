@@ -1,3 +1,9 @@
+//References:-
+// https://developers.google.com/maps/documentation/android-api/code-samples
+// https://www.tutorialspoint.com/android/android_google_maps.htm
+// https://www.androidhive.info/2013/08/android-working-with-google-maps-v2/
+// https://dzone.com/articles/android-tutorial-how-parse
+
 package com.example.carefree.carefree;
 
 import android.annotation.TargetApi;

@@ -1,3 +1,8 @@
+//Refernces: -
+// https://stackoverflow.com/questions/19092631/logout-from-the-application-android
+// https://stackoverflow.com/questions/24163708/logout-clear-sharedpreferences
+// https://stackoverflow.com/questions/41421593/how-to-clear-shared-preferences-for-logout
+
 package com.example.carefree.carefree;
 
 import android.content.Context;

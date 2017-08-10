@@ -1,3 +1,6 @@
+//Refernces:- https://www.androidhive.info/2012/01/android-json-parsing-tutorial/
+// https://examples.javacodegeeks.com/core-java/json/java-json-parser-example/
+
 package com.example.carefree.carefree;
 
 import java.io.BufferedReader;

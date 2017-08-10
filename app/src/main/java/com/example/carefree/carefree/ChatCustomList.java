@@ -1,3 +1,8 @@
+//References:-
+// http://www.journaldev.com/10416/android-listview-with-custom-adapter-example-tutorial
+// http://www.vogella.com/tutorials/AndroidListView/article.html
+// https://www.androidhive.info/2012/02/android-custom-listview-with-image-and-text/
+
 package com.example.carefree.carefree;
 
 import android.app.Activity;

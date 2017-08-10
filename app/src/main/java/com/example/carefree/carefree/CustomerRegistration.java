@@ -1,3 +1,8 @@
+// References:-
+// https://dzone.com/articles/android-tutorial-how-parse
+// https://stackoverflow.com/questions/22603935/inserting-data-into-online-server-using-mysql-json-in-android
+// https://stackoverflow.com/questions/29039024/android-insert-data-into-mysql-json
+
 package com.example.carefree.carefree;
 
 import android.content.Intent;
