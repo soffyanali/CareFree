@@ -9,6 +9,7 @@ package com.example.carefree.carefree;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -21,6 +22,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,7 +49,9 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.google.android.gms.location.LocationServices.FusedLocationApi;
 
@@ -220,6 +224,11 @@ public class RecomCustomerMap extends AppCompatActivity implements
         longitute= location.getLongitude();
         latitude=location.getLatitude();
 
+        //Read fav it exp catg
+
+        readJson();
+        ////
+
         /////Start Add Map Markers
         Intent intent = getIntent();
         String profession = intent.getStringExtra("profession");
@@ -348,6 +357,71 @@ public class RecomCustomerMap extends AppCompatActivity implements
 
     @Override
     public void onConnectionSuspended(int i) {
+    }
+
+    protected void readJson()
+    {
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        // getting JSON string from URL
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd+"selectvisited.php", "GET", params);
+
+        // Check your log cat for JSON reponse
+
+        try {
+
+            Log.d("All Users: ", json.toString());
+
+            SharedPreferences sharedpreferences = getSharedPreferences("loginusersdetails", Context.MODE_PRIVATE);
+            users = json.optJSONArray("result");
+            // looping through All Products
+            Map<String,Integer> itexpcount=new HashMap<String,Integer>();
+            int countser=0,countsec=0,counttec=0,countdev=0,countsupport=0;
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject c = users.getJSONObject(i);
+
+                String customername=c.getString("customername");
+                String itexpertcat=c.getString("itexpertcat");
+
+                SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+                final String name=settings.getString("name", "").toString();
+
+                if(name.equals(customername))
+                {
+                    if(itexpertcat.equals("Services"))
+                    {
+                        countser++;
+                    }
+                    else if(itexpertcat.equals("Security"))
+                    {
+                        countsec++;
+                    }
+                    else if(itexpertcat.equals("Technician"))
+                    {
+                        counttec++;
+                    }
+                    else if(itexpertcat.equals("Developer"))
+                    {
+                        countdev++;
+                    }
+                    else if(itexpertcat.equals("Support"))
+                    {
+                        countsupport++;
+                    }
+
+                }
+            }
+            itexpcount.put("Services",countser);
+            itexpcount.put("Security",countsec);
+            itexpcount.put("Technician",counttec);
+            itexpcount.put("Developer",countdev);
+            itexpcount.put("Support",countsupport);
+            Toast.makeText(getApplicationContext(),"Devloper count="+countdev,Toast.LENGTH_LONG).show();
+
+        }catch (Exception e)
+        {
+
+        }
     }
 
     @Override

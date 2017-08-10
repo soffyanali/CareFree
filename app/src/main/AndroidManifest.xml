@@ -45,6 +45,7 @@
         <activity android:name=".LogOutActivity"></activity>
         <activity android:name=".SelectAccountType"></activity>
         <activity android:name=".SelectITExpertType"></activity>
+        <activity android:name=".RecomCustomerMap"></activity>
 
     </application>
 
