@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,6 +42,7 @@ public class ITExpertOne extends AppCompatActivity {
     Button submitbuttonrating, chatProfessional;
     double longitute;
     double latitude;
+    ToggleButton toggleactiveornot;
     SharedPreferences preferences;
     RatingBar ratingBar;
     JSONParser jParser = new JSONParser();
@@ -67,17 +69,21 @@ public class ITExpertOne extends AppCompatActivity {
         txtvie_activenow = (TextView) findViewById(R.id.txtvie_activenow);
         submitbuttonrating = (Button) findViewById(R.id.submitbuttonrating);
         chatProfessional = (Button) findViewById(R.id.chatProfessional);
-
+        toggleactiveornot= (ToggleButton) findViewById(R.id.toggleactiveornot);
+        //toggleactiveornot.setEnabled(true);
         textview_professionalname.setText(name);
         textviewprofession.setText(profession);
         txtview_phoneno.setText(phoneno);
         textView_emailid.setText(emailid);
-
         if (loginvalue.equals("y")) {
-            txtvie_activenow.setText("Professional is active now");
+            //txtvie_activenow.setText("Professional is active now");
+            toggleactiveornot.setTextOn("User "+name+" is Active");
+            toggleactiveornot.setText("User "+name+" is Active");
         } else {
-            txtvie_activenow.setText("Professional is not active now");
+            toggleactiveornot.setTextOff("User "+name+" is Active");
+            toggleactiveornot.setText("User "+name+" is Inactive");
         }
+        toggleactiveornot.setEnabled(false);
 
         boolean flag=alreadyRated();
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
@@ -86,8 +92,12 @@ public class ITExpertOne extends AppCompatActivity {
         if(flag==true)
         {
             submitbuttonrating.setText("Already Submitted");
+            submitbuttonrating.setVisibility (View.INVISIBLE);
             submitbuttonrating.setEnabled(false);
             ratingBar.setEnabled(false);
+            ratingBar.setVisibility (View.INVISIBLE);
+            Toast.makeText(ITExpertOne.this, name+" user is already rated.", Toast.LENGTH_SHORT).show();
+
         }
 
         txtview_phoneno.setOnClickListener(new View.OnClickListener() {

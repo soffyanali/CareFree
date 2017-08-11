@@ -29,8 +29,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static android.R.attr.name;
-
 public class LoginActivity extends AppCompatActivity {
 
     // Creating JSON Parser object
@@ -131,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     protected void readJson()
-    {
+    {       readAllusers();
             // Building Parameters
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             // getting JSON string from URL
@@ -212,6 +210,52 @@ public class LoginActivity extends AppCompatActivity {
             {
 
             }
+    }
+
+    protected HashMap<String, String> readAllusers()
+    {
+        HashMap<String, String> messages=new HashMap<>();
+        // Building Parameters
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        // getting JSON string from URL
+        JSONObject json = jParser.makeHttpRequest(GlobalDomain.domainadd+"userdetails.php", "GET", params);
+
+        // Check your log cat for JSON reponse
+
+        try {
+
+            Log.d("All Users: ", json.toString());
+
+            //sharedpreferences = getSharedPreferences("loginusersdetails", Context.MODE_PRIVATE);
+            users = json.optJSONArray("result");
+            // looping through All Products
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject c = users.getJSONObject(i);
+
+                ArrayList<String> newArr=new ArrayList<String>();
+
+                String name=c.getString("name");
+                String password=c.getString("password");
+                String accountype=c.getString("account_type");
+                String profession=c.getString("profession");
+                String phoneno=c.getString("phoneno");
+                String emailid=c.getString("emailid");
+                String userlatitute=c.getString("userlatitute");
+                String userlongitute=c.getString("userlongitute");
+
+                newArr.add(0,name);
+                newArr.add(1,password);
+
+                messages.put(name,password);
+            }
+
+//            Toast.makeText(getApplicationContext(),"Asserted= "+messages.get("soffyanit"),Toast.LENGTH_LONG).show();
+
+        }catch (Exception e)
+        {
+
+        }
+        return messages;
     }
 
 }

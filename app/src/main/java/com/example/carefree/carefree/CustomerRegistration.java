@@ -74,6 +74,7 @@ public class CustomerRegistration extends AppCompatActivity
 
                     Intent intent = new Intent(CustomerRegistration.this, LoginActivity.class);
                     startActivity(intent);
+                    finish();
                 }else
                 {
                     Toast.makeText(getApplicationContext(),"Password donot match....!!!",Toast.LENGTH_LONG).show();
@@ -83,7 +84,7 @@ public class CustomerRegistration extends AppCompatActivity
 
     }
 
-    private void insertToDatabase(final String name, final String password,final String account_type,final String emailid1,final String phonenno) {
+    public boolean insertToDatabase(final String name, final String password, final String account_type, final String emailid1, final String phonenno) {
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
             @Override
@@ -133,5 +134,6 @@ public class CustomerRegistration extends AppCompatActivity
         }
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
         sendPostReqAsyncTask.execute(name, password,account_type,"","","","","");
+        return true;
     }
 }
